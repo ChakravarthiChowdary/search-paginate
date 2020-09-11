@@ -38,7 +38,7 @@ const Navbar = ({
 
   return (
     <Container>
-      <div style={{ paddingTop: "2rem" }}>
+      <div style={{ paddingTop: "1rem" }}>
         <Paper className={classes.paper} elevation={5}>
           <FormControl className={classes.formControl}>
             <InputLabel shrink id="demo-simple-select-placeholder-label-label">
@@ -57,7 +57,7 @@ const Navbar = ({
               <MenuItem value={16}>16</MenuItem>
             </Select>
           </FormControl>
-          <div className={classes.margin}>
+          <div>
             <Grid
               container
               spacing={1}

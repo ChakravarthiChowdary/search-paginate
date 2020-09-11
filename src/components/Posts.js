@@ -9,8 +9,8 @@ import Post from "./Post";
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
   card: {
     height: "100%",
@@ -28,15 +28,14 @@ const Posts = ({ posts }) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <main>
-        <Container className={classes.cardGrid} maxWidth="lg">
-          <Grid container spacing={4}>
-            {posts.map((post) => (
-              <Post post={post} key={post.id} />
-            ))}
-          </Grid>
-        </Container>
-      </main>
+
+      <Container className={classes.cardGrid} maxWidth="lg">
+        <Grid container spacing={4}>
+          {posts.map((post) => (
+            <Post post={post} key={post.id} />
+          ))}
+        </Grid>
+      </Container>
     </React.Fragment>
   );
 };
