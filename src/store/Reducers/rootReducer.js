@@ -5,6 +5,10 @@ import {
   GET_POST_START,
   GET_POST_SUCCESS,
   GET_POST_FAIL,
+  SET_POSTPERPAGE,
+  SET_CURRENTPAGE,
+  SET_SORTORDER,
+  SET_SEARCH_TEXT,
 } from "../Actions/actions";
 
 const initialState = {
@@ -13,6 +17,10 @@ const initialState = {
   posts: [],
   post: {},
   comments: [],
+  currentPage: 1,
+  sortOrder: 0,
+  postsPerPage: 8,
+  searchText: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -54,6 +62,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    case SET_POSTPERPAGE:
+      return {
+        ...state,
+        postsPerPage: action.payload,
+      };
+    case SET_CURRENTPAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case SET_SORTORDER:
+      return {
+        ...state,
+        sortOrder: action.payload,
+      };
+    case SET_SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.payload,
       };
     default:
       return state;

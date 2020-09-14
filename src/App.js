@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route path="/:id" component={PostDetails} />
-        <Route path="/" component={Main} />
+        <Route path="/" render={() => <Main />} />
       </Switch>
     </div>
   );

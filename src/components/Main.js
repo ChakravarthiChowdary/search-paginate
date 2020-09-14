@@ -1,30 +1,36 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Posts from "../components/Posts";
 import Navbar from "../components/Navbar";
-import { getPosts } from "../store/Actions/actions";
+import {
+  getPosts,
+  SET_CURRENTPAGE,
+  SET_SORTORDER,
+  SET_POSTPERPAGE,
+  SET_SEARCH_TEXT,
+} from "../store/Actions/actions";
 import Paginate from "../components/Paginate";
 import Footer from "../components/Footer";
 import Error from "../components/Error";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const [searchText, setSearchText] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
   const posts = useSelector((state) => state.root.posts);
-  const [postsPerPage, setPostsPerPage] = useState(8);
-  const [sortOrder, setSortOrder] = useState(0);
+  const sortOrder = useSelector((state) => state.root.sortOrder);
+  const postsPerPage = useSelector((state) => state.root.postsPerPage);
+  const currentPage = useSelector((state) => state.root.currentPage);
+  const searchText = useSelector((state) => state.root.searchText);
 
   const error = useSelector((state) => state.root.error);
 
   const postsPerPageChangedHandler = (event) => {
-    setPostsPerPage(event.target.value);
-    setCurrentPage(1);
+    dispatch({ type: SET_POSTPERPAGE, payload: event.target.value });
+    dispatch({ type: SET_CURRENTPAGE, payload: 1 });
   };
   const sortOrderChangedHandler = (event) => {
-    setSortOrder(event.target.value);
-    setCurrentPage(1);
+    dispatch({ type: SET_SORTORDER, payload: event.target.value });
+    dispatch({ type: SET_CURRENTPAGE, payload: 1 });
   };
 
   if (sortOrder === 0) {
@@ -47,15 +53,15 @@ const Main = () => {
 
   //Search value changed handler
   const searchChangedHandler = (event) => {
-    setSearchText(event.target.value);
+    dispatch({ type: SET_SEARCH_TEXT, payload: event.target.value });
   };
   //Prev button clicked handler
   const prevClickedHandler = () => {
-    setCurrentPage(currentPage - 1);
+    dispatch({ type: SET_CURRENTPAGE, payload: currentPage - 1 });
   };
   //Next button clicked handler
   const nextClickedHandler = () => {
-    setCurrentPage(currentPage + 1);
+    dispatch({ type: SET_CURRENTPAGE, payload: currentPage + 1 });
   };
 
   const indexOfLastPost = currentPage * postsPerPage;

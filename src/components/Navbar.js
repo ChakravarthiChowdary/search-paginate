@@ -8,6 +8,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,6 +36,7 @@ const Navbar = ({
   sortOrder,
 }) => {
   const classes = useStyles();
+  const searchText = useSelector((state) => state.root.searchText);
 
   return (
     <Container>
@@ -73,6 +75,7 @@ const Navbar = ({
                   label="Search posts"
                   fullWidth={true}
                   color="primary"
+                  value={searchText}
                   onChange={searchChangedHandler}
                 />
               </Grid>

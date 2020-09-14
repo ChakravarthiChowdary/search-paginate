@@ -48,7 +48,6 @@ const PostDetails = () => {
   const classes = useStyles();
   const location = useLocation();
   const params = useParams();
-  console.log(params);
   const history = useHistory();
   const dispatch = useDispatch();
   const { loading, error, post, comments } = useSelector((state) => state.root);
@@ -80,7 +79,7 @@ const PostDetails = () => {
             <Typography variant="h6">Comments</Typography>
             <hr />
             {comments.map((comment) => (
-              <Comment comment={comment} />
+              <Comment comment={comment} key={comment.id} />
             ))}
           </Paper>
         )}

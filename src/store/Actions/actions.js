@@ -7,6 +7,11 @@ export const GET_ALL_POSTS_FAIL = "GET_ALL_POSTS_FAIL";
 export const GET_POST_START = "GET_POST_START";
 export const GET_POST_SUCCESS = "GET_POST_SUCCESS";
 export const GET_POST_FAIL = "GET_POST_FAIL";
+//actio types to set postsPerPage, sortOrder, currentPage
+export const SET_POSTPERPAGE = "SET_POSTPERPAGE";
+export const SET_SORTORDER = "SET_SORTORDER";
+export const SET_CURRENTPAGE = "SET_CURRENTPAGE";
+export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";
 
 export const getPosts = () => {
   return async (dispatch) => {
